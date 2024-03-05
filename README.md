@@ -1,6 +1,4 @@
-# Magento 2 Deployer Plus
-
-[![Build Status](https://travis-ci.com/jalogut/magento2-deployer-plus.svg?branch=develop)](https://travis-ci.com/jalogut/magento2-deployer-plus)
+# JustBetter - Magento 2 Deployer Plus
 
 * Reliable fully-automated deployments tool for Magento 2.
 * Zero downtime deployments on Magento versions >= 2.2
@@ -23,7 +21,7 @@ This tool uses the well known [Deployer](https://deployer.org) and adds specific
 ## Installation
 
 ```
-composer require "jalogut/magento2-deployer-plus"
+composer require justbetter/magento2-deployer-plus
 ```
 
 ## Setup
@@ -31,19 +29,19 @@ composer require "jalogut/magento2-deployer-plus"
 ### Magento >= 2.1
 
 ```
-cp <vendor_dir>/jalogut/magento2-deployer-plus/deploy.php.sample_2_1 deploy.php
+cp <vendor_dir>/justbetter/magento2-deployer-plus/deploy.php.sample_2_1 deploy.php
 ```
 
 ### Magento >= 2.2
 
 ```
-cp <vendor_dir>/jalogut/magento2-deployer-plus/deploy.php.sample_2_2 deploy.php
+cp <vendor_dir>/justbetter/magento2-deployer-plus/deploy.php.sample_2_2 deploy.php
 ```
 
 ### Magento >= 2.2.5
 
 ```
-cp <vendor_dir>/jalogut/magento2-deployer-plus/deploy.php.sample_2_2_5 deploy.php
+cp <vendor_dir>/justbetter/magento2-deployer-plus/deploy.php.sample_2_2_5 deploy.php
 ```
 
 ## Usage
@@ -61,18 +59,6 @@ cp <vendor_dir>/jalogut/magento2-deployer-plus/deploy.php.sample_2_2_5 deploy.ph
 <bin_dir>/dep deploy-artifact [<stage>]
 ```
 
-## Disclaimer
-
-### Build command
-Build command can only be used if config propagation is properly configured. See Magento DevDocs:
-
-* [Propagate config accross systems](http://devdocs.magento.com/guides/v2.2/config-guide/cli/config-cli-subcommands-config-mgmt-export.html)
-
-Also check `app:config:dump` issue and workaround here:
-
-* [PR #12410](https://github.com/magento/magento2/pull/12410)
-* [Gist workaround](https://gist.github.com/jalogut/d72e0af6e10c502bff90423e66bf07b9)
-
 ## Troubleshooting
 
 #### Js translations missing (magento versions >=2.1.3 <2.2.1)
@@ -87,11 +73,11 @@ Also check `app:config:dump` issue and workaround here:
 
 	```php
 	// deploy.php
-	task('files:static_assets', '
-		{{bin/php}} {{magento_bin}} setup:static-content:deploy en_US {{static_deploy_options}}
-		{{bin/php}} {{magento_bin}} setup:static-content:deploy de_CH {{static_deploy_options}}
-		{{bin/php}} {{magento_bin}} setup:static-content:deploy fr_FR {{static_deploy_options}}
-	');
+	 task('files:static_assets', function () {
+		run('{{bin/php}} {{magento_bin}} setup:static-content:deploy en_US {{static_deploy_options}}');
+		run('{{bin/php}} {{magento_bin}} setup:static-content:deploy de_CH {{static_deploy_options}}');
+		run('{{bin/php}} {{magento_bin}} setup:static-content:deploy fr_FR {{static_deploy_options}}');
+	 });
 	```
 	
 #### Compilation error
@@ -128,7 +114,7 @@ Also check `app:config:dump` issue and workaround here:
 
 ## Prerequisites
 
-- PHP >= 7.0.8
+- PHP >= 8.0
 - MAGENTO >= 2.1
 
 ## ChangeLog
@@ -137,9 +123,8 @@ Also check `app:config:dump` issue and workaround here:
 
 ## Developers
 
-* [Juan Alonso](https://github.com/jalogut)
-* [Oscar Recio](https://github.com/osrecio)
-* [Contributors](https://github.com/jalogut/magento2-deployer-plus/graphs/contributors)
+* [Claudio Ferraro (JustBetter)](https://github.com/jbclaudio)
+* [Contributors](https://github.com/justbetter/magento2-deployer-plus/graphs/contributors)
 
 Licence
 -------
@@ -147,4 +132,4 @@ Licence
 
 Copyright
 ---------
-(c) Juan Alonso <juan.jalogut@gmail.com>
+(c) JustBetter B.V. <hello@justbetter.nl>
