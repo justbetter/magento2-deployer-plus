@@ -2,7 +2,7 @@
 
 namespace Deployer;
 
-require 'vendor/jalogut/magento2-deployer-plus/recipe/magento_2_1.php';
+require 'vendor/justbetter/magento2-deployer-plus/recipe/magento_2_1.php';
 
 // Use timestamp for release name
 set('release_name', function () {
@@ -24,24 +24,24 @@ after('cache:clear', 'cache:clear:opcache');
 
 // Remote Servers
 host('dev_master')
-    ->hostname('<hostname>')
-    ->user('<user>')
+    ->setHostname('<hostname>')
+    ->setRemoteUser('<user>')
     ->set('deploy_path', '~')
-    ->stage('dev')
+    ->set('labels', ['stage' => 'dev'])
     ->roles('master');
 
 host('stage_master')
-    ->hostname('<hostname>')
-    ->user('<user>')
+    ->setHostname('<hostname>')
+    ->setRemoteUser('<user>')
     ->set('deploy_path', '~')
-    ->stage('stage')
+    ->set('labels', ['stage' => 'stage'])
     ->roles('master');
 
 host('prod_master')
-    ->hostname('<hostname>')
-    ->user('<user>')
+    ->setHostname('<hostname>')
+    ->setRemoteUser('<user>')
     ->set('deploy_path', '~')
-    ->stage('prod')
+    ->set('labels', ['stage' => 'prod'])
     ->roles('master');
 
 // ---- Multi-server Configuration ----
@@ -49,15 +49,15 @@ host('prod_master')
 // task('database:upgrade')->onRoles('master');
 //
 //host('prod_slave_1')
-//    ->hostname('<hostname>')
-//    ->user('<user>')
+//    ->setHostname('<hostname>')
+//    ->setRemoteUser('<user>')
 //    ->set('deploy_path', '~')
-//    ->stage('prod')
+//    ->set('labels', ['stage' => 'prod'])
 //    ->roles('slave');
 //
 //host('prod_slave_2')
-//    ->hostname('<hostname>')
-//    ->user('<user>')
+//    ->setHostname('<hostname>')
+//    ->setRemoteUser('<user>')
 //    ->set('deploy_path', '~')
-//    ->stage('prod')
+//    ->set('labels', ['stage' => 'prod'])
 //    ->roles('slave');
