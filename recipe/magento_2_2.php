@@ -38,7 +38,7 @@ task('build', function () {
 desc('Deploy artifact');
 task('deploy-artifact', [
     'deploy:info',
-    'deploy:prepare',
+    'deploy:setup',
     'deploy:lock',
     'deploy:release',
     'artifact:upload',
@@ -66,7 +66,7 @@ fail('deploy-artifact', 'deploy:failed');
 desc('Deploy project');
 task('deploy', [
     'deploy:info',
-    'deploy:prepare',
+    'deploy:setup',
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
