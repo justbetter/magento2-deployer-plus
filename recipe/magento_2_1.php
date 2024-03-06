@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Deployer;
 
-require_once 'recipe/common.php';
+require_once 'recipe/magento2.php';
 require_once __DIR__ . '/magento_2_1/files.php';
 require_once __DIR__ . '/magento_2_1/maintenance.php';
 require_once __DIR__ . '/magento_2_1/database.php';
