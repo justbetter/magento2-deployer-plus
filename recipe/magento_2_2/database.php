@@ -13,8 +13,6 @@ namespace Deployer;
 use Deployer\Exception\RuntimeException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-const DB_UPDATE_NEEDED_EXIT_CODE = 2;
-
 set('database_upgrade_needed', function () {
     try {
         run('{{bin/php}} {{release_path}}/{{magento_bin}} setup:db:status');
