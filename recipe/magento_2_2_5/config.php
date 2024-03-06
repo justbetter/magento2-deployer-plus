@@ -13,8 +13,6 @@ namespace Deployer;
 use Deployer\Exception\RuntimeException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-const CONFIG_IMPORT_NEEDED_EXIT_CODE = 2;
-
 set('config_import_needed', function () {
     try {
         run('{{bin/php}} {{release_path}}/{{magento_bin}} app:config:status');
