@@ -72,8 +72,8 @@ task('deploy', [
     'maintenance:unset',
     'cache:clear',
     'deploy:unlock',
-    'cleanup',
-    'success',
+    'deploy:cleanup',
+    'deploy:success',
 ]);
 
 after('deploy:failed', 'deploy:unlock');
