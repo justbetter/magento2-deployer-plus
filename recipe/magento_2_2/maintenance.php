@@ -12,6 +12,6 @@ namespace Deployer;
 
 task('maintenance:set:if-needed', function () {
     get('database_upgrade_needed') || get('config_import_needed') ?
-        run('maintenance:set') :
+        invoke('maintenance:set') :
         writeln('Skipped -> Maintenance is not needed');
 });
