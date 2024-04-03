@@ -8,9 +8,9 @@ task('cache:clear:magento', function () {
     run('{{bin/php}} {{release_path}}/{{magento_bin}} cache:flush');
 });
 
-task('cache:clear', function () {
-    invoke('cache:clear:magento');
-});
+task('cache:clear', [
+    'cache:clear:magento',
+]);
 
 task('cache:clear:if-maintenance', function () {
     test('[ -f {{deploy_path}}/current/{{magento_dir}}/var/.maintenance.flag ]') ?

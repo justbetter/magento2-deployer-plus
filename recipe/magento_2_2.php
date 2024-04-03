@@ -20,20 +20,23 @@ require_once __DIR__ . '/magento_2_2/crontab.php';
 require_once __DIR__ . '/magento_2_2/files.php';
 require_once __DIR__ . '/magento_2_2/rollback.php';
 
-desc('Build Artifact');
-task('build', function () {
+task('prepare:configuration', function () {
     set('deploy_path', '.');
     set('release_path', '.');
     set('current_path', '.');
     $origStaticOptions = get('static_deploy_options');
     set('static_deploy_options', '-f ' . $origStaticOptions);
+});
 
-    invoke('files:remove-generated');
-    invoke('deploy:vendors');
-    invoke('config:remove-dev-modules');
-    invoke('files:generate');
-    invoke('artifact:package');
-})->once();
+desc('Build Artifact');
+task('build', [
+    'prepare:configuration',
+    'files:remove-generated',
+    'deploy:vendors',
+    'config:remove-dev-modules',
+    'files:generate',
+    'artifact:package',
+]);
 
 desc('Deploy artifact');
 task('deploy-artifact', [

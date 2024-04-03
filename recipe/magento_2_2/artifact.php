@@ -29,9 +29,13 @@ task('artifact:upload', function () {
     upload(get('artifact_path'), '{{release_path}}');
 });
 
-task('build', function () {
+task('artifact:extract', function () {
     run('tar -xzpf {{release_path}}/{{artifact_file}} -C {{release_path}};');
     run('rm -rf {{release_path}}/{{artifact_file}}');
-    invoke('files:static_assets');
-    invoke('files:permissions');
 });
+
+task('build', [
+    'artifact:extract',
+    'files:static_assets',
+    'files:permissions',
+]);
