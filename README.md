@@ -4,6 +4,11 @@
 * Zero downtime deployments on Magento versions >= 2.2
 * Automating your deployments is as easy as defining the servers where you want to deploy to.
 
+## Archived
+
+All features this offered are already available in deployer itself at this point [see](https://github.com/deployphp/deployer/blob/master/recipe/magento2.php)
+Migrate your deployments to use that instead.
+
 ## Motivation
 
 This project aims to offer a common solution for fully-automated deployments on all versions of Magento 2.
